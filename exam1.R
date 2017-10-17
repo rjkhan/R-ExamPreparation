@@ -83,3 +83,81 @@ save_plant <- function(power_plant)
 
 
 save_plant(power_plant)
+
+
+
+#question 2 with s3 
+build_city <- function(name, nr_region)
+{
+  city_ <- list(name=name, bombings=data.frame(id=1:nr_region, hits=numeric(nr_region)))
+  class(city_) <- "city"
+  return(city_)
+}
+
+city_obj<- build_city("london",576)
+
+simulate_bombings.city <- function(city, number_of_raids)
+{
+  UseMethod()
+  for (i in 1:number_of_raids) {
+    for (j in 1:nrow(city$bombings)) {
+      city$bombings$hits[j] <- city$bombings$hits[j] + rpois(1,lambda = 0.93) 
+    }
+  }
+  return(city)
+}
+
+print = function(city) {
+  UseMethod("print", city)
+}
+a<-print.abc(city_obj,34)
+
+
+account <-  setRefClass("account", fields = list(balance="numeric"), methods = list(
+  withdraw = function(x)
+  {
+    balance <<- balance - x
+  },
+  deposite = function(x)
+  {
+    balance <<- balance + x
+  }
+))
+
+
+newaccount_type <- setRefClass("newaccount_type", contains = "account", methods = list(
+  withdraw = function(x)
+  {
+    if(balance < x)
+    {
+      print("you cannot with draw")
+    }
+    else
+    {
+      balance <<- balance - x
+    }
+  }
+))
+
+a<- newaccount_type$new(balance = 100)
+a$balance
+a$withdraw(20)
+a$balance
+
+b <- a
+a$balance
+b$balance
+
+new
+
+a$balance
+account
+RnG <- setRefClass("RnG", fields = list(), methods = list())
+
+beta<- setRefClass("beta", fields = list(),methods = list(), contains = "RnG")
+
+
+df2 <- data.frame(id=1:100, x=seq(1,100,by= 1), y=rnorm(1:100))
+
+ggplot(df) + geom_line(aes(x = x , y = y)) + geom_line(data= df2, aes(x=x,y=y))
+
