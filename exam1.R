@@ -1,3 +1,13 @@
+#' Add together two numbers.
+#'
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
+
 library(ggplot2)
 gen_shape<- function()
 {
@@ -161,3 +171,33 @@ df2 <- data.frame(id=1:100, x=seq(1,100,by= 1), y=rnorm(1:100))
 
 ggplot(df) + geom_line(aes(x = x , y = y)) + geom_line(data= df2, aes(x=x,y=y))
 
+
+Account2 <- set("Account",
+                        public = list(
+                          initialize = function(balance = 0){
+                            private$balance = balance
+                          },
+                          withdraw = function(x){
+                            if (private$balance < x) stop("Not enough money")
+                            private$balance <- private$balance - x
+                          },
+                          deposit = function(x) {
+                            private$balance <- private$balance + x
+                          }
+                        ),
+                        private = list(
+                          balance = NULL
+                        )
+)
+
+a<-Account2$new(4)
+
+
+a<- c(1:10)
+result<- sapply(a, function(x) {
+      xx<- 0
+      xx <- xx + x
+      xx
+    }
+)
+result
