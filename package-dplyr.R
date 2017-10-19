@@ -56,3 +56,19 @@ by_tailnum <- group_by(one_col, dest )
 delay <- summarise(by_tailnum, count = n())
 delay
 by_tailnum
+
+
+a<- data.frame(a=c(1:10), b=seq(1,10,1))
+
+dplyr::tbl_df(a)
+
+
+dplyr::glimpse(a)
+tidyr::gather(a,"a",convert = TRUE, value="ccc")
+dplyr::cumall(a$a)
+dplyr::bind_rows(a,a[1])
+
+
+fruit <- c("apple", "banana", "pear", "pineapple")
+fruit
+s
