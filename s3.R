@@ -17,3 +17,29 @@ draw_rnd <- function (x , ... ) {
   x$draw_rnd()
 }
 draw_rnd(be)
+
+
+
+
+
+
+
+
+saman <- function()
+{
+  a<- "hello"
+  class(a) <- "myclass"
+  a
+}
+
+
+x<- saman()
+class(x)
+
+print.myclass <- function(){
+  
+}
+
+a <- list(a="1",b="2")
+class(a) <- "mylist"
+class(a)
